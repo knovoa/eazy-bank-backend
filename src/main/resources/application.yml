@@ -1,5 +1,9 @@
 spring:
   application:
     name: spring-security-basics
+  security:
+    user:
+      name: kev
+      password: test
 server:
   port: 8086

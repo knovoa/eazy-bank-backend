@@ -11,6 +11,6 @@ public class WelcomeController {
 	@GetMapping("/")
 	public String sayHello() {
 		log.info("passing welcome controller >> sayHello() method");
-		return "Welcome to Spring Application with out security";
+		return "Welcome to Spring Application with basic security";
 	}
 }

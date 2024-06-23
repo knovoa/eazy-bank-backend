@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-security-basics
+    name: eazy-bank-backend
   security:
     user:
       name: kev

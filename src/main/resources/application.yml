@@ -1,9 +1,11 @@
+server:
+  port: 8086
 spring:
   application:
     name: eazy-bank-backend
-  security:
-    user:
-      name: kev
-      password: test
-server:
-  port: 8086
+
+logging:
+  level:
+    "org.springframework.security": ${SPRING_SECURITY_LOG_LEVEL:TRACE}
+  pattern:
+    console: ${LOG_PATTERN_CONSOLE:%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger) - %cyan(%msg%n)}

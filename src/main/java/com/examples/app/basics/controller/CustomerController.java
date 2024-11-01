@@ -20,8 +20,7 @@ public class CustomerController {
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody Customer customer) {
 	try {
-	  String hashPasword = passwordEncoder.encode(customer.getPassword());
-	  customer.setPassword(hashPasword);
+	  customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 	  customer.setRole("read");
 	  Customer savedCustomer = customerRepository.save(customer);
 	  return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);

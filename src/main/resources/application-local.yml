@@ -2,9 +2,9 @@ server:
   port: 8086
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/spring-security-course
-    username: root
-    password: mysql
+    url: jdbc:h2:mem:spring-security-course
+    username: sa
+    password: sql
   jpa:
     open-in-view: true
     show-sql: true

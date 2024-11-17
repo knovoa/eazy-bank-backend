@@ -18,8 +18,8 @@ public class SecurityConfig {
   /**
    * Configures the security filter chain for the application.
    *
-   * @param http the HttpSecurity object used to configure the filter chain
-   * @return the configured SecurityFilterChain
+   * @param http {@link HttpSecurity} the HttpSecurity object used to configure the filter chain
+   * @return {@link SecurityFilterChain} the configured SecurityFilterChain
    * @throws Exception if there is an error configuring the filter chain
    */
   @Bean

@@ -1,5 +1,8 @@
 package com.examples.app.basics.config;
 
+import static com.examples.app.basics.util.constants.SecurityConstants.PUBLIC_PATHS;
+import static com.examples.app.basics.util.constants.SecurityConstants.SECURED_PATHS;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
@@ -29,11 +32,8 @@ public class SecurityConfig {
 			.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
 		.csrf(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests(requests -> requests
-			.requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards")
-			.authenticated()
-			.requestMatchers("/notices", "/contact", "/error",
-				"/register", "/h2-console/**")
-			.permitAll())
+			.requestMatchers(SECURED_PATHS).authenticated()
+			.requestMatchers(PUBLIC_PATHS).permitAll())
 		.formLogin(Customizer.withDefaults())
 		.httpBasic(Customizer.withDefaults());
 	return http.build();

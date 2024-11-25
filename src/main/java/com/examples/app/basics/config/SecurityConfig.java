@@ -3,6 +3,7 @@ package com.examples.app.basics.config;
 import static com.examples.app.basics.util.constants.SecurityConstants.PUBLIC_PATHS;
 import static com.examples.app.basics.util.constants.SecurityConstants.SECURED_PATHS;
 
+import com.examples.app.basics.exception.CustomBasicAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -38,7 +39,8 @@ public class SecurityConfig {
 			.requestMatchers(SECURED_PATHS).authenticated()
 			.requestMatchers(PUBLIC_PATHS).permitAll())
 		.formLogin(Customizer.withDefaults())
-		.httpBasic(Customizer.withDefaults());
+		//.httpBasic(Customizer.withDefaults());
+		.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
 	return http.build();
   }
 

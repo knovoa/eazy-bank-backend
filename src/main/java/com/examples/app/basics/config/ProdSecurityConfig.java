@@ -16,9 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
 
-@Profile("!prod")
+@Profile("prod")
 @Configuration
-public class SecurityConfig {
+public class ProdSecurityConfig {
 
   /**
    * Configures the security filter chain for the application.
@@ -30,7 +30,7 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 	http
-		.requiresChannel(channel -> channel.anyRequest().requiresInsecure()) //Only HTTP
+		.requiresChannel(channel -> channel.anyRequest().requiresSecure()) //Only HTTPS
 		.headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer
 			.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
 		.csrf(AbstractHttpConfigurer::disable)
